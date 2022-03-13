@@ -9,9 +9,9 @@ RUN apt-get clean
 # Packages
 RUN apt-get -y install aircrack-ng amap beef burpsuite cewl chromium crackmapexec crowbar crunch curl dirb dirbuster dnsenum dnsrecon dnsutils \
     dos2unix enum4linux exploitdb ffuf ftp gcc gdb git gobuster hashcat hping3 hydra iputils-ping john joomscan kismet make medusa metasploit-framework \ 
-    mimikatz nasm nbtscan ncat netcat-traditional nikto nmap ollydbg onesixtyone openvas-scanner patator php powercat powershell powersploit proxychains4 \
+    mimikatz nasm nbtscan ncat netcat-traditional nikto nmap ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 \
     python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools recon-ng responder samba samdump2 seclists \ 
-    set shellter sipvicious smbclient smbmap snmp socat sqlmap ssh sslscan tcpdump theharvester vim wafw00f weevely wfuzz whatweb whois wireshark wine \ 
+    set shellter sipvicious smbclient smbmap snmp snmpenum socat sqlmap ssh sslscan tcpdump theharvester vim wafw00f weevely wfuzz whatweb whois wireshark wine \ 
     wordlists wpscan zaproxy zsh
 
 # GUI
