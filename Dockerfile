@@ -32,7 +32,7 @@ autologin-user-timeout=0\n\
 ENV DISPLAY=host.docker.internal:0.0
 
 # User huhu
-RUN adduser huhu --disabled-password --gecos ''
+RUN adduser huhu --shell /bin/zsh --disabled-password --gecos ''
 RUN adduser huhu sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN groupadd -r autologin
