@@ -6,7 +6,6 @@ set hlsearch
 set ignorecase
 set incsearch
 set nocompatible
-set number
 set showcmd
 set showmatch
 set showmode
