@@ -7,12 +7,24 @@ RUN apt-get -y install kali-linux-core
 RUN apt-get clean
 
 # Packages
-RUN apt-get -y install aircrack-ng amap apktool beef binwalk burpsuite cewl checksec chromium crackmapexec crowbar crunch curl dirb dirbuster dnsenum dnsrecon \
+RUN apt-get -y install aircrack-ng amap apktool beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl dirb dirbuster dnsenum dnsrecon \
     dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf foremost ftp gcc gdb ghidra git gobuster hashcat hping3 hydra ipmitool iputils-ping john joomscan kismet \
     make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto nmap ollydbg onesixtyone patator php powercat powershell \
-    powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools recon-ng redis-tools remmina responder \ 
-    ropper samba samdump2 seclists set shellter sipvicious smbclient smbmap smtp-user-enum snmp snmpenum socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze strace tcpdump \
-    telnet tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh
+    powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools radare2 recon-ng redis-tools remmina \
+    responder ropper samba samdump2 seclists set shellter sipvicious smbclient smbmap smtp-user-enum snmp snmpenum socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze strace \
+    swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh
+
+# Python Packages
+RUN pip3 install oletools[full]
+
+# Ruby Packages
+RUN gem install evil-winrm
+
+# Git Repositories
+RUN git clone https://github.com/internetwache/GitTools.git /opt/GitTools
+
+# Binaries
+RUN wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64 -P /opt && chmod +x /opt/kerbrute_linux_amd64
 
 # GUI
 RUN apt-get -y install kali-desktop-xfce lightdm
@@ -37,6 +49,7 @@ RUN adduser huhu sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN groupadd -r autologin
 RUN gpasswd -a huhu autologin
+RUN chown -R huhu:huhu /opt
 
 # Zsh
 ADD .zsh_history /home/huhu/.zsh_history
