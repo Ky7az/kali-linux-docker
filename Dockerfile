@@ -6,13 +6,21 @@ RUN apt-get -y upgrade
 RUN apt-get -y install kali-linux-core
 RUN apt-get clean
 
+# Locale
+RUN apt-get -y install locales
+ENV LANG en_US.UTF-8
+RUN echo "$LANG UTF-8" > /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=$LANG
+
 # Packages
-RUN apt-get -y install aircrack-ng amap apktool beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl dirb dirbuster dnsenum dnsrecon \
-    dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf foremost ftp gcc gdb ghidra git gobuster hashcat hping3 hydra ipmitool iputils-ping john joomscan kismet \
-    make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto nmap ollydbg onesixtyone patator php powercat powershell \
-    powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools radare2 recon-ng redis-tools remmina \
-    responder ropper samba samdump2 seclists set shellter sipvicious smbclient smbmap smtp-user-enum snmp snmpenum socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze strace \
-    swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh
+RUN apt-get -y install aircrack-ng amap apktool awscli beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl default-mysql-client dirb \
+    dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf foremost ftp gcc gdb ghidra git gobuster hashcat hashid hping3 hydra ipmitool \
+    iputils-ping john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto nmap ollydbg onesixtyone \
+    patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools radare2 \
+    recon-ng redis-tools remmina responder ropper samba samdump2 seclists set shellter sipvicious smbclient smbmap smtp-user-enum snmp snmpenum socat sqlitebrowser sqlmap ssh \
+    sshpass sslscan sslyze strace swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan \
+    yara zaproxy zsh
 
 # Python Packages
 RUN pip3 install oletools[full]
@@ -50,6 +58,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN groupadd -r autologin
 RUN gpasswd -a huhu autologin
 RUN chown -R huhu:huhu /opt
+RUN touch /home/huhu/.hushlogin # Hide msg from Kali developers
 
 # Zsh
 ADD .zsh_history /home/huhu/.zsh_history
