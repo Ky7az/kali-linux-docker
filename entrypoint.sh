@@ -4,5 +4,6 @@ sed -i "s/xserver-display-number=0/xserver-display-number=$(echo $DISPLAY | cut 
 
 service dbus start
 service lightdm start
+# service ssh start
 
 tail -f /dev/null
