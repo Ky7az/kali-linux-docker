@@ -14,13 +14,13 @@ RUN echo "$LANG UTF-8" > /etc/locale.gen && \
     update-locale LANG=$LANG
 
 # Packages
-RUN apt-get -y install aircrack-ng amap apktool awscli beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl default-mysql-client dirb \
-    dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf foremost ftp gcc gdb ghidra git gobuster hashcat hashid hexedit hping3 hydra ipmitool \
-    iputils-ping john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto nmap ollydbg onesixtyone \
-    patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools python-setuptools radare2 \
-    recon-ng redis-tools remmina responder ropper samba samdump2 seclists set shellter sipvicious smbclient smbmap smtp-user-enum snmp snmpenum socat sqlitebrowser sqlmap ssh \
-    sshpass sslscan sslyze steghide strace swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists \
-    wpscan yara zaproxy zsh
+RUN apt-get -y install aircrack-ng amap apktool awscli beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl default-mysql-client dex2jar dirb \
+    dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf flameshot foremost ftp gcc gdb ghidra git gobuster hashcat hashid hexedit hping3 \
+    hydra ipmitool iputils-ping jadx john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto nmap \
+    ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools \
+    radare2 recon-ng redis-tools remmina responder ropper samba samdump2 seclists set shellter sipvicious smali smbclient smbmap smtp-user-enum snmp snmpcheck snmpenum \
+    snmp-mibs-downloader socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze steghide strace swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim wafw00f \
+    weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh
 
 # Python Packages
 RUN pip3 install oletools[full]
