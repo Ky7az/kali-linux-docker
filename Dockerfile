@@ -73,7 +73,11 @@ ENV VENV=/home/huhu/venv
 RUN python3 -m venv $VENV
 ENV PATH="$VENV/bin:$PATH"
 RUN pip install oletools[full]
-RUN pip install playwright && playwright install
+RUN pip install paramiko
+RUN pip install pexpect
+RUN pip install playwright
+RUN pip install pwntools
+RUN pip install requests
 
 # Zsh
 ADD .zsh_history /home/huhu/.zsh_history
