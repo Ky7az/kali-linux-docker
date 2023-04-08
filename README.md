@@ -1,14 +1,12 @@
 # Kali Linux Docker Image
 
-- Start a X server on your host
-
-- Build image and start container
+- Build an image and start the container
 ```
 docker build -t kali-linux-docker .
-docker run -d -v --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 --name kali kali-linux-docker:latest
+docker run -d -v --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 22222:22 --name kali kali-linux-docker:latest
 ```
 
-- Override DISPLAY environment variable (by default 0.0)
+- Install Xpra and start a desktop session with X11 forwarding
 ```
--e "DISPLAY=host.docker.internal:X.0"
+xpra start-desktop --start=xfce4-session ssh://huhu@127.0.0.1:22222
 ```
