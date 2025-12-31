@@ -13,17 +13,14 @@ RUN echo "$LANG UTF-8" > /etc/locale.gen && \
 
 # Packages
 RUN apt install -y aircrack-ng amap apktool awscli beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl dbus-x11 default-mysql-client \
-    dex2jar dirb dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux exiftool exploitdb fierce ffuf flameshot foremost ftp gcc gdb ghidra git gobuster hashcat hashid hexedit \
-    hping3 hydra ipmitool iputils-ping jadx john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional nfs-common nikto \
-    nmap ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip python3-setuptools \
-    python3-venv radare2 recon-ng redis-tools remmina responder rlwrap ropper ruby-dev samba samdump2 seclists set shellter sipvicious smali smbclient smbmap smtp-user-enum snmp snmpcheck \
-    snmpenum snmp-mibs-downloader socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze steghide strace swaks tcpdump telnet tor torbrowser-launcher theharvester traceroute vim \
-    wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh \
+    dex2jar dirb dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux evil-winrm-py exiftool exploitdb fierce ffuf flameshot foremost ftp gcc gdb ghidra git gobuster hashcat \
+    hashid hexedit hping3 hydra ipmitool iputils-ping jadx john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional \
+    nfs-common nikto nmap ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip \
+    python3-setuptools python3-venv radare2 recon-ng redis-tools remmina responder rlwrap ropper samba samdump2 seclists set shellter sipvicious smali smbclient smbmap \
+    smtp-user-enum snmp snmpcheck snmpenum snmp-mibs-downloader socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze steghide strace swaks tcpdump telnet tor torbrowser-launcher \
+    theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
-
-# Ruby Packages
-RUN gem install evil-winrm
 
 # Git Repositories
 RUN mkdir -p /opt/git
@@ -45,7 +42,7 @@ RUN wget -q -O /opt/bin/pspy64 https://github.com/DominicBreuker/pspy/releases/l
 
 # GUI + RDP
 RUN apt update \
-    && apt -y install kali-desktop-xfce xorg xorgxrdp xrdp \
+    && apt -y install kali-desktop-kde xorg xorgxrdp xrdp \
     && sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini
 
 # User huhu
