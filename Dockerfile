@@ -14,20 +14,21 @@ RUN echo "$LANG UTF-8" > /etc/locale.gen && \
 # Packages
 RUN apt install -y aircrack-ng amap apktool awscli beef binwalk bloodhound burpsuite cewl checksec chromium crackmapexec crowbar crunch curl dbus-x11 default-mysql-client \
     dex2jar dirb dirbuster dnsenum dnsrecon dnsutils dos2unix enum4linux evil-winrm-py exiftool exploitdb fierce ffuf flameshot foremost ftp gcc gdb ghidra git gobuster hashcat \
-    hashid hexedit hping3 hydra ipmitool iputils-ping jadx john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat netcat-traditional \
-    nfs-common nikto nmap ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev python3-impacket python3-pip \
-    python3-setuptools python3-venv radare2 recon-ng redis-tools remmina responder rlwrap ropper samba samdump2 seclists set shellter sipvicious smali smbclient smbmap \
-    smtp-user-enum snmp snmpcheck snmpenum snmp-mibs-downloader socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze steghide strace swaks tcpdump telnet tor torbrowser-launcher \
-    theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh \
+    hashid hexedit hping3 hydra impacket-scripts ipmitool iputils-ping jadx john joomscan kismet make medusa metasploit-framework mimikatz mongodb-clients nasm nbtscan ncat \
+    netcat-traditional netexec nfs-common nikto nmap ollydbg onesixtyone patator php powercat powershell powersploit proxychains4 python2 python2-dev python3 python3-dev \
+    python3-impacket python3-pip python3-setuptools python3-venv radare2 recon-ng redis-tools remmina responder rlwrap ropper samba samdump2 seclists set shellter sipvicious \
+    smali smbclient smbmap smtp-user-enum snmp snmpcheck snmpenum snmp-mibs-downloader socat sqlitebrowser sqlmap ssh sshpass sslscan sslyze steghide strace swaks tcpdump telnet \
+    tor torbrowser-launcher theharvester traceroute vim wafw00f weevely wfuzz whatweb whois wireshark wine wordlists wpscan yara zaproxy zsh \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Git Repositories
 RUN mkdir -p /opt/git
-RUN git clone https://github.com/internetwache/GitTools.git /opt/git/GitTools
 RUN git clone https://github.com/diegocr/netcat.git /opt/git/netcat
-RUN git clone https://github.com/scipag/vulscan /opt/git/scipag_vulscan && ln -s /opt/git/scipag_vulscan /usr/share/nmap/scripts/vulscan
+RUN git clone https://github.com/internetwache/GitTools.git /opt/git/GitTools
 RUN git clone https://github.com/pentestmonkey/php-reverse-shell.git /opt/git/php-reverse-shell
+RUN git clone https://github.com/scipag/vulscan /opt/git/scipag_vulscan && ln -s /opt/git/scipag_vulscan /usr/share/nmap/scripts/vulscan
+RUN git clone https://github.com/szalek/Ghostpack-CompiledBinaries.git /opt/git/GhostpackBinaries
 
 # Binaries
 RUN mkdir -p /opt/bin
@@ -36,9 +37,9 @@ RUN wget -q -O /opt/bin/chisel_windows_amd64.zip "$(curl -s https://api.github.c
 RUN wget -q -O /opt/bin/kerbrute_linux_amd64 https://github.com/ropnop/kerbrute/releases/latest/download/kerbrute_linux_amd64 && chmod +x /opt/bin/kerbrute_linux_amd64
 RUN wget -q -O /opt/bin/linpeas.sh https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh
 RUN wget -q -O /opt/bin/linpeas_linux_amd64 https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas_linux_amd64
+RUN wget -q -O /opt/bin/pspy64 https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64
 RUN wget -q -O /opt/bin/winPEAS.bat https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEAS.bat
 RUN wget -q -O /opt/bin/winPEASx64.exe https://github.com/carlospolop/PEASS-ng/releases/latest/download/winPEASx64.exe
-RUN wget -q -O /opt/bin/pspy64 https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64
 
 # GUI + RDP
 RUN apt update \
