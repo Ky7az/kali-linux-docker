@@ -11,5 +11,5 @@ docker run -d --privileged --sysctl net.ipv6.conf.all.disable_ipv6=0 -p 22222:22
 
 ```sh
 xfreerdp /list:kbd | grep French # To get your keyboard layout
-xfreerdp /f /v:127.0.0.1:33390 /u:huhu /p:huhu +dynamic-resolution +clipboard /kbd:layout:0x000040C
+xfreerdp /f /v:127.0.0.1:33390 /u:huhu /p:huhu /compression +clipboard +dynamic-resolution /kbd:layout:0x000040C
 ```
